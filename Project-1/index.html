@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<title> Project-1 </title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+
+.dropbtn {
+  background-color: #3498DB;
+  color: white;
+  padding: 12px 58px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #2980B9;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {background-color: #ddd;}
+
+.show {display: block;}
+
+</style>
+<style>
+
+  body {
+    font: 10px sans-serif;
+  }
+  
+  .bar rect {
+    shape-rendering: crispEdges;
+  }
+  
+  .bar text {
+    fill: #999999;
+  }
+  
+  .axis path, .axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+  }
+  
+  </style>
+  <style>
+    .slidecontainer {
+      width: 100%;
+    }
+    
+    .slider {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 15px;
+      border-radius: 5px;
+      background: #d3d3d3;
+      outline: none;
+      opacity: 0.7;
+      -webkit-transition: .2s;
+      transition: opacity .2s;
+    }
+    
+    .slider:hover {
+      opacity: 1;
+    }
+    
+    .slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      background: #4CAF50;
+      cursor: pointer;
+    }
+    
+    .slider::-moz-range-thumb {
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      background: #4CAF50;
+      cursor: pointer;
+    }
+    </style>
+</head>
+
+<body>
+
+  <h1 align="center" style="background-color: #4CAF50 ;">Visualisation Project-1</h1>
+
+  <div class="slidecontainer">
+    <input type="range" min="2" max="100" value="10" class="slider" id="myRange">
+    <p>Value: <span id="demo"></span></p>
+  </div>
+   
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+  <script src="barChart.js"></script>
+  <script src="histogram.js"></script>
+  
+  <div class="dropdown">
+    <button onclick="dropdnFunction()" class="dropbtn">Menu</button>
+    <div id="Dropdown" class="dropdown-content">
+      <a href="javascript:readCol('Country')">Country</a>
+      <a href="javascript:readCol('PlaceCat')">PlaceCat</a>
+      <a href="javascript:readCol('Region')">Region</a>
+      <a href="javascript:readCol('Event')">Event</a>
+      <a href="javascript:readCol('Gender')">Gender</a>
+      <a href="javascript:readCol('B_Score_Cat')">B_Score_Cat</a>
+      <a href="javascript:readColName('Overall_Score')">Overall_Score</a>
+      <a href="javascript:readColName('Rank')">Rank</a>
+      <a href="javascript:readColName('A_Score')">A_Score</a>
+      <a href="javascript:readColName('B_Score')">B_Score</a>
+      <a href="javascript:readColName('C_Score')">C_Score</a>
+      <a href="javascript:readColName('Time')">Time</a>
+      <a href="javascript:readColName('A_Ded_Cnt')">A_Ded_Cnt</a>
+      <a href="javascript:readColName('Nandu_Miss')">Nandu_Miss</a>
+      <a href="javascript:readColName('Nandu_Total')">Nandu_Total</a>
+    </div>
+  </div>
+  <div style="text-align:center;">
+    <svg width="100" height="100"></svg>
+  </div>
+ 
+  
+  <script>
+        function dropdnFunction() {
+            document.getElementById("Dropdown").classList.toggle("show");
+          }
+          window.onclick = function(event) {
+            if (!event.target.matches('.dropbtn')) {
+              var dropdowns = document.getElementsByClassName("dropdown-content");
+              var i;
+              for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                  openDropdown.classList.remove('show');
+                  
+                }
+              }
+            }
+          }
+    </script>
+</body>

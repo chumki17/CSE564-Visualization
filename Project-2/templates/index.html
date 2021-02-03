@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<title> Project-2 </title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+
+.dropbtn {
+  background-color: #3498DB;
+  color: white;
+  padding: 12px 58px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #2980B9;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {background-color: #ddd;}
+
+.show {display: block;}
+
+</style>
+<style>
+
+  body {
+    font: 10px sans-serif;
+  }
+  
+  .bar rect {
+    shape-rendering: crispEdges;
+  }
+  
+  .bar text {
+    fill: #999999;
+  }
+  
+  .axis path, .axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+  }
+  </style>
+ <style>
+  .header {
+    height:35px;
+    text-align: center;
+    background: #1abc9c;
+    color: white;
+    font-size: 12px;
+    margin-bottom:0.5em;
+    
+    font-family: "Times New Roman";
+    border-width: 5px ;
+    border-radius: 5px;
+}
+</style>
+
+</head>
+
+<body>
+<div class="header">
+  <h1>Visualisation Project-2</h1>
+</div> 
+
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!-- <script src="static/barChart.js"></script> -->
+  <script src="{{ url_for('static',filename='ScreePlot.js') }}" charset="utf-8"></script>
+  <script src="{{ url_for('static',filename='ScatterPlot.js') }}" charset="utf-8"></script>
+  <script src="{{ url_for('static',filename='MDS.js') }}" charset="utf-8"></script>
+  <script src="{{ url_for('static',filename='ScatterMatrix.js') }}" charset="utf-8"></script>
+  
+  
+  
+  
+  <div class="dropdown">
+    <button onclick="dropdnFunction()" class="dropbtn">Menu</button>
+    <div id="Dropdown" class="dropdown-content">
+      <a href="javascript:screePlot('1')"> Scree Plot of Original data</a>
+      <a href="javascript:screePlot('2')"> Scree Plot of Random Sampled data</a>
+      <a href="javascript:screePlot('3')"> Scree Plot of Stratifed Sampled data</a>
+      <a href="javascript:scatterPlot('1')"> Scatter Plot of Original data</a>
+      <a href="javascript:scatterPlot('2')"> Scatter Plot of Random Sampled data</a>
+      <a href="javascript:scatterPlot('3')"> Scatter Plot of Stratifed Sampled data</a>
+      <a href="javascript:MDS('1')"> MDS Plot of Stratifed Eucledian data</a>
+      <a href="javascript:MDS('2')"> MDS Plot of Random Eucledian data</a>
+      <a href="javascript:MDS('3')"> MDS Plot of Stratifed Correlation data</a>
+      <a href="javascript:MDS('4')"> MDS Plot of Random Correlation data</a>
+      <a href="javascript:scatterMatrix('1')"> Scatter Matrix of Original data</a>
+      <a href="javascript:scatterMatrix('2')"> Scatter Matrix of Random Sampled data</a>
+      <a href="javascript:scatterMatrix('3')"> Scatter Matrix of Stratifed Sampled data</a>
+     
+    </div>
+  </div>
+  <div style="text-align:center;">
+    <svg width="100" height="100"></svg>
+  </div>
+ 
+  
+  <script>
+        function dropdnFunction() {
+            document.getElementById("Dropdown").classList.toggle("show");
+          }
+          window.onclick = function(event) {
+            if (!event.target.matches('.dropbtn')) {
+              var dropdowns = document.getElementsByClassName("dropdown-content");
+              var i;
+              for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                  openDropdown.classList.remove('show');
+                  
+                }
+              }
+            }
+          }
+    </script>
+</body>
